@@ -3,27 +3,6 @@ provider "aws" {
    region = var.region
 }
 
-# Configure the Artifactory provider
-provider "artifactory" {
-  url = "https://artifactory"
-  username = "uname"
-  password = "pass"
-}
-
-data "artifactory_file" "my-file" {
-   repository = "repo-key"
-   path = "/path/to/the/artifact.zip"
-   output_path = "tmp/artifact.zip"
-}
-
-
-# Create a new repository
-resource "artifactory_local_repository" "pypi-libs" {
-  key             = "pypi-libs"
-  package_type    = "pypi"
-  repo_layout_ref = "simple-default"
-  description     = "A pypi repository for python packages"
-}
 
 resource "aws_s3_bucket" "dev_bucket" {
    bucket = local.s3bucket
