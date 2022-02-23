@@ -6,7 +6,6 @@ provider "aws" {
 
 resource "aws_s3_bucket" "dev_bucket" {
    bucket = local.s3bucket
-   acl = "private"
    tags = {
       Name  = local.s3bucket
       Environment = var.environment
